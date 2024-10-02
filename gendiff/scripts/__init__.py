@@ -1,1 +1,1 @@
-from .gendiff import generate_dif
+from .gendiff import generate_diff
