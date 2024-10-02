@@ -49,7 +49,7 @@ def generate_diff(first: Union[JsonObject, YamlObject], second: Union[JsonObject
     keys_all.sort()
     '''with open('res.txt', 'w') as f:
         print(formater(0, rekursive_diff(first, second)), file=f)'''
-    return formater(0, rekursive_diff(first, second))
+    return formater(0, rekursive_diff(first, second)).rstrip('\n')
         
 def rekursive_diff(first: Union[JsonObject, YamlObject], second: Union[JsonObject, YamlObject]) -> dict[str, Union[dict, str, int, bool]]:
     if type(first) is dict and type(second) is dict:
