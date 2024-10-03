@@ -8,7 +8,7 @@ from yaml.loader import SafeLoader
 from gendiff.formatters.stylish import BASE_TAB, formater
 from gendiff.formatters.plain import plain
 from gendiff.formatters.format_json import format_json
-from gendiff.scripts.rekursiv import rekursive_diff
+from gendiff.scripts.rekursiv import generate_diff
 
 
 def main():
@@ -23,8 +23,8 @@ def main():
     args = parser.parse_args()
     first_file, second_file = load_json_or_yaml(args.first_file, args.second_file)
 
-    first, second = generate_diff(first_file, second_file)
-    return choise_format(args.format, first_file, second_file)
+    # first, second = generate_diff(first_file, second_file)
+    return choise_format(first_file, second_file, args.format)
 
 
 def load_json_or_yaml(first, second):
@@ -41,7 +41,7 @@ def load_json_or_yaml(first, second):
     return first_file, second_file
 
 
-def generate_diff(
+def generate_diff_1(
     first: Union[JsonObject, YamlObject], second: Union[JsonObject, YamlObject]
 ) -> str:
     keys_all = list(first.keys()) + list(second.keys())
@@ -49,16 +49,16 @@ def generate_diff(
     keys_all = list(keys_all)
     keys_all.sort()
     with open("res.txt", "w") as f:
-        print(plain(rekursive_diff(first, second)), file=f)
+        print(plain(generate_diff(first, second)), file=f)
     # return formater(0, rekursive_diff(first, second)).rstrip('\n')
     # return plain(rekursive_diff(first, second)).rstrip('\n')
     return first, second
 
 
-def choise_format(format: str, first: dict, second: dict):
+def choise_format(first: dict, second: dict, format: str = "stylish"):
     if format == "plain":
-        return plain(rekursive_diff(first, second)).rstrip("\n")
+        return plain(generate_diff(first, second)).rstrip("\n")
     if format == "stylish":
-        return formater(0, rekursive_diff(first, second)).rstrip("\n")
+        return formater(0, generate_diff(first, second)).rstrip("\n")
     if format == "json":
         return format_json(first, second)
