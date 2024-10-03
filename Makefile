@@ -20,4 +20,4 @@ test:
 	poetry install
 	poetry build
 	python3 -m pip install --force-reinstall dist/hexlet_code-0.1.0-py3-none-any.whl
-	gendiff tests/fixtures/file1.json  tests/fixtures/file2.json
+	gendiff -f json tests/fixtures/file1.json  tests/fixtures/file2.json
