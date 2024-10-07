@@ -21,11 +21,14 @@ def main():
     parser.add_argument("-f", "--format", help="set format of output")
 
     args = parser.parse_args()
+
+    format = 'stylish' if args.format is None else args.format
+
     first_file, second_file = load_json_or_yaml(args.first_file, args.second_file)
 
     # first, second = generate_diff(first_file, second_file)
-    print(choise_format(first_file, second_file, args.format))
-    return choise_format(first_file, second_file, args.format)
+    print(choise_format(first_file, second_file, format))
+    return choise_format(first_file, second_file, format)
 
 
 def load_json_or_yaml(first, second):
@@ -49,17 +52,15 @@ def generate_diff_1(
     keys_all = set(keys_all)
     keys_all = list(keys_all)
     keys_all.sort()
-    with open("res.txt", "w") as f:
-        print(plain(generate_diff(first, second)), file=f)
-    # return formater(0, rekursive_diff(first, second)).rstrip('\n')
-    # return plain(rekursive_diff(first, second)).rstrip('\n')
     return first, second
 
 
 def choise_format(first: dict, second: dict, format: str='stylish'):
     if format == "plain":
         return plain(generate_diff(first, second)).rstrip("\n")
-    if format == "stylish":
+    elif format == "stylish":
         return formater(0, generate_diff(first, second)).rstrip("\n")
-    if format == "json":
+    elif format == "json":
         return format_json(first, second)
+    else:
+        return 'problem'
