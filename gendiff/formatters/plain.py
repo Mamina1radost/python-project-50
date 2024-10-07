@@ -23,8 +23,8 @@ def value_to_plain(value: bool | None | int | str | dict):
         result = str(value)
         result = result.lower()
         return result
-    if value is None:
-        return 0
+    if value is None and value != 0:
+        return "null"
     if type(value) is str:
         return f"'{value}'"
     if type(value) is dict:
