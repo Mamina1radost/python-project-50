@@ -25,7 +25,7 @@ def value_to_plain(value: bool | None | int | str | dict):
         return result
     if value is None:
         return 'null'
-    if value == 0:
+    if str(value) == '0':
         return None
     if type(value) is str:
         return f"'{value}'"
