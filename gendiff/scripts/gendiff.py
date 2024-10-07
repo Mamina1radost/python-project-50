@@ -8,10 +8,10 @@ from yaml.loader import SafeLoader
 from gendiff.formatters.stylish import BASE_TAB, formater
 from gendiff.formatters.plain import plain
 from gendiff.formatters.format_json import format_json
-from gendiff.scripts.rekursiv import generate_diff
+from gendiff.scripts.rekursiv import generate_tree
 
 
-def main():
+def generate_diff():
     parser = argparse.ArgumentParser(
         description="Compares two configuration files and shows a difference."
     )
@@ -57,9 +57,9 @@ def generate_diff_1(
 
 def choise_format(first: dict, second: dict, format: str='stylish'):
     if format == "plain":
-        return plain(generate_diff(first, second)).rstrip("\n")
+        return plain(generate_tree(first, second)).rstrip("\n")
     elif format == "stylish":
-        return formater(0, generate_diff(first, second)).rstrip("\n")
+        return formater(0, generate_tree(first, second)).rstrip("\n")
     elif format == "json":
         return format_json(first, second)
     else:

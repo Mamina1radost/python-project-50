@@ -2,7 +2,7 @@ from typing import Union
 from gendiff.schemas import JsonObject, YamlObject
 
 
-def generate_diff(
+def generate_tree(
     first: Union[JsonObject, YamlObject], second: Union[JsonObject, YamlObject]
 ) -> dict[str, Union[dict, str, int, bool]]:
     if type(first) is dict and type(second) is dict:
@@ -25,7 +25,7 @@ def generate_diff(
         elif isinstance(first.get(key), dict) and isinstance(second.get(key), dict):
             result_dict[key] = [
                 "recursiv",
-                generate_diff(first.get(key), second.get(key)),
+                generate_tree(first.get(key), second.get(key)),
             ]
         elif key in first and key in second:
             if first[key] == second[key]:
