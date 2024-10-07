@@ -19,14 +19,14 @@ def plain(
 
 
 def value_to_plain(value: bool | None | int | str | dict):
+    if str(value) == '0':
+        return 'None'
     if type(value) is bool:
         result = str(value)
         result = result.lower()
         return result
     if value is None:
         return 'null'
-    if str(value) == '0':
-        return None
     if type(value) is str:
         return f"'{value}'"
     if type(value) is dict:
