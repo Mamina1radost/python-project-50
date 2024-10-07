@@ -9,7 +9,7 @@ def generate_diff(
         keys_all = list(first.keys()) + list(second.keys())
     elif type(first) is dict and type(second) is not dict:
         keys_all = list(first.keys())
-    else:
+    elif type(first) is not dict and type(second) is dict:
         keys_all = list(second.keys())
     keys_all = set(keys_all)
     keys_all = list(keys_all)

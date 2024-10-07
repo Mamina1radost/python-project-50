@@ -24,6 +24,7 @@ def main():
     first_file, second_file = load_json_or_yaml(args.first_file, args.second_file)
 
     # first, second = generate_diff(first_file, second_file)
+    print(choise_format(first_file, second_file, args.format))
     return choise_format(first_file, second_file, args.format)
 
 
@@ -55,7 +56,7 @@ def generate_diff_1(
     return first, second
 
 
-def choise_format(first: dict, second: dict, format: str = "stylish"):
+def choise_format(first: dict, second: dict, format: str='stylish'):
     if format == "plain":
         return plain(generate_diff(first, second)).rstrip("\n")
     if format == "stylish":
