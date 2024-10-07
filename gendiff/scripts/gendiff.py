@@ -11,7 +11,7 @@ from gendiff.formatters.format_json import format_json
 from gendiff.scripts.rekursiv import generate_tree
 
 
-def generate_diff():
+def main():
     parser = argparse.ArgumentParser(
         description="Compares two configuration files and shows a difference."
     )
@@ -23,8 +23,13 @@ def generate_diff():
     args = parser.parse_args()
 
     format = 'stylish' if args.format is None else args.format
+    first, second =args.first_file, args.second_file
+    return generate_diff(first, second, format)
 
-    first_file, second_file = load_json_or_yaml(args.first_file, args.second_file)
+
+
+def generate_diff(first, second, format='stylish'):
+    first_file, second_file = load_json_or_yaml(first, second)
 
     # first, second = generate_diff(first_file, second_file)
     print(choise_format(first_file, second_file, format))
