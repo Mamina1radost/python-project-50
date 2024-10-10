@@ -19,7 +19,7 @@ def plain(
 
 
 def value_to_plain(value: bool | None | int | str | dict):
-    if value == 0:
+    if str(value) == '0':
         return 'None'
     if type(value) is bool:
         result = str(value)
