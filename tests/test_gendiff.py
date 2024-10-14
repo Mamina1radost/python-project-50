@@ -7,11 +7,11 @@ from yaml.loader import SafeLoader
 
 def test_choise_format():
     format = "plain"
-    '''first = json.load(open("tests/fixtures/file1.json"))
+    """first = json.load(open("tests/fixtures/file1.json"))
     second = json.load(open("tests/fixtures/file2.json"))
     result = open("tests/fixtures/plain.txt").read()
 
-    assert choise_format(first, second, format) == result'''
+    assert choise_format(first, second, format) == result"""
 
     first = json.load(open("tests/fixtures/file3.json"))
     second = json.load(open("tests/fixtures/file4.json"))
@@ -19,9 +19,9 @@ def test_choise_format():
 
     assert choise_format(first, second, format) == result
 
-
     first = yaml.load(open("tests/fixtures/file1.yaml"), Loader=SafeLoader)
     second = yaml.load(open("tests/fixtures/file2.yaml"), Loader=SafeLoader)
+    result = open("tests/fixtures/plain.txt").read()
 
     assert choise_format(first, second, format) == result
 
@@ -47,5 +47,3 @@ def test_choise_format():
     second = yaml.load(open("tests/fixtures/file2.yaml"), Loader=SafeLoader)
 
     assert choise_format(first, second, format) == result
-
-

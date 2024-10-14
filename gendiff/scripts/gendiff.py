@@ -22,13 +22,12 @@ def main():
 
     args = parser.parse_args()
 
-    format = 'stylish' if args.format is None else args.format
-    first, second =args.first_file, args.second_file
+    format = "stylish" if args.format is None else args.format
+    first, second = args.first_file, args.second_file
     return generate_diff(first, second, format)
 
 
-
-def generate_diff(first, second, format='stylish'):
+def generate_diff(first, second, format="stylish"):
     first_file, second_file = load_json_or_yaml(first, second)
 
     # first, second = generate_diff(first_file, second_file)
@@ -60,7 +59,7 @@ def generate_diff_1(
     return first, second
 
 
-def choise_format(first: dict, second: dict, format: str='stylish'):
+def choise_format(first: dict, second: dict, format: str = "stylish"):
     if format == "plain":
         return plain(generate_tree(first, second)).rstrip("\n")
     elif format == "stylish":
@@ -68,4 +67,4 @@ def choise_format(first: dict, second: dict, format: str='stylish'):
     elif format == "json":
         return format_json(first, second)
     else:
-        return 'problem'
+        return "problem"
