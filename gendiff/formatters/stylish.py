@@ -16,7 +16,7 @@ def formater(
             case "added":
                 result += f"{tab}  + {key}: {value_to_json(value[1], tab)}\n"
             case "recursiv":
-                result += f"{tab}    {key}: {formater(depth+1, (value[1]))}"
+                result += f"{tab}    {key}: {formater(depth + 1, (value[1]))}"
             case "unchanged":
                 result += f"{tab}    {key}: {value_to_json(value[1], tab)}\n"
             case "changed":
