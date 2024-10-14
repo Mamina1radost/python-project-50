@@ -31,7 +31,6 @@ def generate_diff(first, second, format="stylish"):
     first_file, second_file = load_json_or_yaml(first, second)
 
     # first, second = generate_diff(first_file, second_file)
-    print(choise_format(first_file, second_file, format))
     return choise_format(first_file, second_file, format)
 
 

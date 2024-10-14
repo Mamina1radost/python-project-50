@@ -19,7 +19,6 @@ def formater(depth, result_dict: dict[str, Union[dict, str, int, bool, list]]) -
         elif value[0] == "changed":
             result += f"{tab}  - {key}: {value_to_json(value[1], tab)}\n"
             result += f"{tab}  + {key}: {value_to_json(value[2], tab)}\n"
-    print(result_dict)
     return result + tab + "}" + "\n"
 
 
