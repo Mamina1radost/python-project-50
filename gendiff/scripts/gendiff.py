@@ -5,7 +5,7 @@ from pathlib import Path
 from gendiff.schemas import JsonObject, YamlObject
 from typing import Union
 from yaml.loader import SafeLoader
-from gendiff.formatters.stylish import BASE_TAB, formater
+from gendiff.formatters.stylish import formater
 from gendiff.formatters.plain import plain
 from gendiff.formatters.format_json import format_json
 from gendiff.scripts.rekursiv import generate_tree

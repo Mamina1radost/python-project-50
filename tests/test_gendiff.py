@@ -1,4 +1,3 @@
-import pytest
 import json
 from gendiff.scripts.gendiff import choise_format
 import yaml
