@@ -24,7 +24,8 @@ def main():
 
     format = "stylish" if args.format is None else args.format
     first, second = args.first_file, args.second_file
-    return generate_diff(first, second, format)
+    diff = generate_diff(first, second, format)
+    print(diff)
 
 
 def generate_diff(first, second, format="stylish"):
